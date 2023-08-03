@@ -1,4 +1,5 @@
-run-nginx:
+# Build using openresty commands
+start-nginx:
 	openresty -p `pwd` -c conf/nginx.conf
 
 stop-nginx:
@@ -6,3 +7,16 @@ stop-nginx:
 
 reload-nginx:
 	openresty -p `pwd` -c conf/nginx.conf -s reload
+
+# Build using Docker containers (recommended)
+build:
+	docker-compose build
+
+run: build
+	docker-compose up
+
+stop:
+	docker-compose down
+
+reload:
+	docker-compose exec origin openresty -s reload
