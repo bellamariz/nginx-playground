@@ -1,6 +1,7 @@
 FROM openresty/openresty:alpine
 
 EXPOSE 80
+EXPOSE 8080
 EXPOSE 8380
 
 RUN apk update && \
@@ -25,3 +26,4 @@ RUN luarocks install lua-cjson && \
 
 COPY conf/*.conf /usr/local/openresty/nginx/conf
 COPY temp/* /usr/local/openresty/nginx/temp/*
+COPY lua/*.lua /usr/local/openresty/nginx/conf
