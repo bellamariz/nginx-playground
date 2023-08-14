@@ -16,3 +16,13 @@ To build and run the application using Docker:
 To reload NGINX configuration without having to rebuild the container:
 
 `make reload`
+
+After the container is up, use the following example requests to see the dynamic balancing in action.
+
+```
+curl -v localhost:8080/prefix/final/fantasy.mp4
+curl -v localhost:8080/prefix/final/destination.mp4
+curl -v localhost:8080/prefix/final/champions/league.mp4
+```
+
+By default, the first two hosts are returning 5xx errors and the proxy pass is redirecting the requests to the third host. But you can play around with other scenarios by simply changing the returned status code of each destination server.
