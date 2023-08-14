@@ -23,7 +23,6 @@ origin.proxy_pass_data = function(destination)
   local cached_pass_data = ngx.shared["cached_pass_data"]
   local destination_data = cached_pass_data:get(destination)
   local hosts_and_paths = cjson.decode(destination_data)
-  local path = hosts_and_paths["paths"]["default"]
 
   ngx.ctx.hosts = hosts_and_paths.hosts
   ngx.ctx.path = hosts_and_paths["paths"]["default"]
