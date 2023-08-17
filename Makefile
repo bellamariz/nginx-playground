@@ -19,4 +19,4 @@ stop:
 	docker-compose down
 
 reload:
-	docker-compose exec origin openresty -s reload
+	docker-compose exec nginx openresty -s reload
